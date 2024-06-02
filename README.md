@@ -1,9 +1,7 @@
 <div style="margin-top:0; padding-top:0" align="center">
-<h1 style="margin-top:0">Valantis product list</h1>
-<p>A simple demonstration app created with Vue 3 (Options API) and Vuetify in Vite - with products API communication, searching and filtering products.</p>
+<h1 style="margin-top:0">Data heroes demo app</h1>
+<p>A simple demonstration app created with Vue 3 (Composition API) in Vite - with API communication, searching and filtering products.</p>
   
-<img src="./src/assets/valantis-poster.webp" width="200"/>
+<img src="/public/data-heroes-logo.svg" width="200"/>
 
-
-
-<p>Used technology stack: <b>Vue 3 (Options API), Vuetify, SCSS.</b></p>
+<p>Used technology stack: <b>Vue 3 (Composition API), SCSS, Vite.</b></p>
