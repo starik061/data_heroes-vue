@@ -39,7 +39,8 @@
 <style lang="scss" scoped>
 .character-card-wrapper {
    display: flex;
-   flex-basis: 600px;
+   width: 600px;
+   flex-shrink: 1;
    color: rgb(255, 255, 255);
    background-color: rgb(60, 62, 68);
    border-radius: 9px;

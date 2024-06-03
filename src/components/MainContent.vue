@@ -33,11 +33,23 @@ function playAudio(event) {
 
 <style lang="scss" scoped>
 .cards-container {
+   // display: flex;
+   // flex-wrap: wrap;
+   // justify-content: flex-start;
+   // gap: 27px;
+   // margin: 20px auto;
+   width: 600px;
+   padding: 10px 0;
    display: flex;
-   flex-wrap: wrap;
    justify-content: flex-start;
+   align-items: flex-start;
+   align-content: flex-start;
+   flex-wrap: wrap;
    gap: 27px;
-   width: 1300px;
    margin: 20px auto;
+
+   @media screen and (min-width: 1227px) {
+      width: 1227px;
+   }
 }
 </style>
