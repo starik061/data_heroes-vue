@@ -2,7 +2,8 @@
    <audio class="visually-hidden" type="audio/mpeg" ref="audioRef" />
    <main>
       <div class="cards-container" @click="playAudio">
-         <CharacterCard v-for="(character, characterIdx ) in 3" :key="characterIdx" />
+         <CharacterCard v-for="(character, characterIdx ) in props.charactersData" :key="character + characterIdx"
+            :character="character" />
       </div>
       <!-- <v-pagination :length="totalPages" :total-visible="3" :start="calcStartPaginationNumber()" rounded="circle"
          active-color="grey-darken-4" :model-value="page" @update:modelValue="changePage"></v-pagination> -->
@@ -28,6 +29,10 @@ function playAudio(event) {
    }
 }
 // ___________________________________
+
+const props = defineProps({
+   charactersData: Array
+})
 
 </script>
 

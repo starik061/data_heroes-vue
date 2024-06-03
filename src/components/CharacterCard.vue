@@ -19,20 +19,27 @@
       </v-card>
    </v-lazy> -->
    <div class="character-card-wrapper">
-      <img src="../assets/placeholder_image.jpg" alt="" class="character-image">
+      <img :src="props.character?.image || '../assets/placeholder_image.jpg'" :alt="props.character?.name || 'unknown'"
+         class="character-image">
       <div class="chacarter-info-container">
-         <h2 class="character-name">Name</h2>
-         <p class="character-status-and-race">Alive - Alien</p>
+         <h2 class="character-name">{{ props.character?.name }}</h2>
+         <p class="character-status-and-race">{{ props.character?.status || "unknown" }} - {{ props.character?.species
+            ||
+            "unknown" }}
+         </p>
          <h3 class="last-location-header">Last known location:</h3>
-         <p class="last-location-info">unknown</p>
+         <p class="last-location-info">{{ props.character?.location?.name || "unknown" }}</p>
 
          <h3 class=" first-location-header">First seen in:</h3>
-         <p class="first-location-info">The Rickshank Rickdemption</p>
+         <p class="first-location-info">{{ props.character?.origin?.name || "unknown" }}</p>
       </div>
    </div>
 </template>
 
 <script setup>
+const props = defineProps({
+   character: Object
+})
 
 </script>
 
