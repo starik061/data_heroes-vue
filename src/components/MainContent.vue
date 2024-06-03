@@ -1,8 +1,8 @@
 <template>
    <audio class="visually-hidden" type="audio/mpeg" ref="audioRef" />
    <main>
-      <div class="cards-container">
-         <CharacterCard v-for="character in 3" :key="character" @click="playAudio()" />
+      <div class="cards-container" @click="playAudio">
+         <CharacterCard v-for="(character, characterIdx ) in 3" :key="characterIdx" />
       </div>
       <!-- <v-pagination :length="totalPages" :total-visible="3" :start="calcStartPaginationNumber()" rounded="circle"
          active-color="grey-darken-4" :model-value="page" @update:modelValue="changePage"></v-pagination> -->
@@ -19,10 +19,12 @@ import characterClickSound from "@/assets/product_click.mp3"
 
 const audioRef = ref(null);
 
-function playAudio() {
-   if (audioRef.value) {
+function playAudio(event) {
+   if (event.target.closest(".character-card-wrapper")) {
+
       audioRef.value.src = characterClickSound;
       audioRef.value.play().catch(error => console.error('Error playing sound:', error));
+
    }
 }
 // ___________________________________

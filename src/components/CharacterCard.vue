@@ -44,6 +44,13 @@
    background-color: rgb(60, 62, 68);
    border-radius: 9px;
    overflow: hidden;
+   cursor: pointer;
+   transition: transform 100ms ease-in;
+
+   &:hover {
+      box-shadow: 0px 0px 7px 3px rgba(76, 146, 232, 1);
+      transform: scale(1.02);
+   }
 
    & h3 {
       margin-top: 16px;
