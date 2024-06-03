@@ -3,14 +3,17 @@
       <v-toolbar-title>
          <img src="/public/data-heroes-logo.svg" class="data-heroes-logo" alt="logo" @click="goTo()" width="240px">
       </v-toolbar-title>
-      <v-text-field class="d-block text-field" label="Search character" variant="outlined" hide-details></v-text-field>
-      <v-btn class="ml-1 mr-3 bg-blue-lighten-1" variant="text" icon="mdi-magnify"></v-btn>
+      <v-text-field class="d-block text-field" label="Search character" variant="outlined" hide-details
+         :model-value="filterQuery" @update:modelValue="changeFilterQuery" @keyup.enter="emitFiltration"></v-text-field>
+      <v-btn class="ml-1 mr-3 bg-blue-lighten-1" variant="text" icon="mdi-magnify"
+         @click.prevent="emitFiltration"></v-btn>
       <label for="filter-select">
          <v-icon class="pr-3" variant="text" icon="mdi-filter"></v-icon>
       </label>
 
       <div class="d-block text-field-small">
-         <v-select id="filter-select" label="Тип фильтра" variant="outlined" hide-details>
+         <v-select id="filter-select" label="Тип фильтра" variant="outlined" hide-details :items="statusTypes"
+            :model-value="choosenStatusType" @update:modelValue="changeFilterType">
          </v-select>
       </div>
       <v-spacer></v-spacer>
@@ -18,6 +21,26 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
+const emit = defineEmits(["filtration"])
+
+const statusTypes = ['alive', 'dead', 'unknown'];
+const choosenStatusType = ref('alive');
+const filterQuery = ref("");
+
+function changeFilterType(type) {
+   choosenStatusType.value = type;
+}
+
+function changeFilterQuery(e) {
+   filterQuery.value = e.trim();
+}
+
+function emitFiltration() {
+   emit("filtration", { name: filterQuery, status: choosenStatusType })
+}
+
 function goTo() {
    window.open("https://dataheroes.pro/", '_blank');
 }
@@ -42,19 +65,5 @@ function goTo() {
    &-small {
       flex-basis: 150px;
    }
-}
-
-.visually-hidden {
-   position: absolute;
-   width: 1px;
-   height: 1px;
-   margin: -1px;
-   border: 0;
-   padding: 0;
-
-   white-space: nowrap;
-   clip-path: inset(100%);
-   clip: rect(0 0 0 0);
-   overflow: hidden;
 }
 </style>

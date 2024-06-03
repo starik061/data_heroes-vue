@@ -2,7 +2,7 @@
   <Loader :isLoading="isLoading" />
 
   <div class="main-container">
-    <HeaderBar />
+    <HeaderBar @filtration="handleFiltration" />
 
     <template v-if="true">
       <MainContent v-if="!isLoading" :charactersData="charactersData" />
@@ -23,7 +23,7 @@ import HeaderBar from "@/components/HeaderBar.vue";
 import MainContent from "@/components/MainContent.vue";
 import FooterBar from "@/components/FooterBar.vue";
 
-import { getCharacters } from "@/api/rick-and-mortyAPI";
+import { getCharacters, getFilteredCharacters } from "@/api/rick-and-mortyAPI";
 
 
 
@@ -33,6 +33,11 @@ import { ref, onMounted } from 'vue';
 const isLoading = ref(false);
 const charactersData = ref([]);
 
+async function handleFiltration(payload) {
+
+  const response = await getFilteredCharacters(payload);
+  charactersData.value = response.results;
+}
 
 onMounted(async () => {
   const response = await getCharacters();

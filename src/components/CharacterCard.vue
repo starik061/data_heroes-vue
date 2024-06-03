@@ -1,39 +1,24 @@
 <template>
-   <!-- <v-lazy :options="{ 'threshold': 0.5 }" transition="fade-transition">
-      <v-card class="mx-auto product-card" color="blue-lighten-1" variant="elevated">
-         <v-img cover height="150" src="/src/assets/placeholder_image.jpg" alt="" crossorigin loading="lazy"></v-img>
-         <v-card-item>
-            <div>
-               <div class="text-caption mb-1 no-overflow">
-                  ID: {{ product.id }}
-               </div>
-               <div class="text-h6 mb-1 no-overflow">
-                  {{ product.product || "-" }}
-               </div>
-               <div class="text-caption no-overflow">Brand: {{ product.brand || "-" }}</div>
-            </div>
-            <div class="text-overline mb-1 no-overflow">
-               {{ `Price: ${product.price} $` || "-" }}
-            </div>
-         </v-card-item>
-      </v-card>
-   </v-lazy> -->
-   <div class="character-card-wrapper">
-      <img :src="props.character?.image || '../assets/placeholder_image.jpg'" :alt="props.character?.name || 'unknown'"
-         class="character-image">
-      <div class="chacarter-info-container">
-         <h2 class="character-name">{{ props.character?.name }}</h2>
-         <p class="character-status-and-race">{{ props.character?.status || "unknown" }} - {{ props.character?.species
-            ||
-            "unknown" }}
-         </p>
-         <h3 class="last-location-header">Last known location:</h3>
-         <p class="last-location-info">{{ props.character?.location?.name || "unknown" }}</p>
+   <v-lazy :options="{ 'threshold': 0.5 }" transition="fade-transition">
+      <div class="character-card-wrapper">
+         <img :src="props.character?.image || '../assets/placeholder_image.jpg'"
+            :alt="props.character?.name || 'unknown'" class="character-image" loading="lazy">
+         <div class="chacarter-info-container">
+            <h2 class="character-name">{{ props.character?.name }}</h2>
+            <p class="character-status-and-race">{{ props.character?.status || "unknown" }} - {{
+               props.character?.species
+               ||
+               "unknown" }}
+            </p>
+            <h3 class="last-location-header">Last known location:</h3>
+            <p class="last-location-info">{{ props.character?.location?.name || "unknown" }}</p>
 
-         <h3 class=" first-location-header">First seen in:</h3>
-         <p class="first-location-info">{{ props.character?.origin?.name || "unknown" }}</p>
+            <h3 class=" first-location-header">First seen in:</h3>
+            <p class="first-location-info">{{ props.character?.origin?.name || "unknown" }}</p>
+         </div>
       </div>
-   </div>
+   </v-lazy>
+
 </template>
 
 <script setup>
