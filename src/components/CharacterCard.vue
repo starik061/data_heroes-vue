@@ -4,17 +4,17 @@
          <img :src="props.character?.image || '../assets/placeholder_image.jpg'"
             :alt="props.character?.name || 'unknown'" class="character-image" loading="lazy">
          <div class="chacarter-info-container">
-            <h2 class="character-name">{{ props.character?.name }}</h2>
-            <p class="character-status-and-race">{{ props.character?.status || "unknown" }} - {{
+            <h2 class="character-name no-overflow">{{ props.character?.name }}</h2>
+            <p class="character-status-and-race no-overflow">{{ props.character?.status || "unknown" }} - {{
                props.character?.species
                ||
                "unknown" }}
             </p>
             <h3 class="last-location-header">Last known location:</h3>
-            <p class="last-location-info">{{ props.character?.location?.name || "unknown" }}</p>
+            <p class="last-location-info no-overflow">{{ props.character?.location?.name || "unknown" }}</p>
 
             <h3 class=" first-location-header">First seen in:</h3>
-            <p class="first-location-info">{{ props.character?.origin?.name || "unknown" }}</p>
+            <p class="first-location-info no-overflow">{{ props.character?.origin?.name || "unknown" }}</p>
          </div>
       </div>
    </v-lazy>
