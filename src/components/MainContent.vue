@@ -29,6 +29,7 @@ function playAudio(event) {
    }
 };
 // ___________________________________
+
 // Эта часть куда служит для работы с пагинацией и данными от АПИ
 const props = defineProps({
    charactersData: Array,
@@ -52,12 +53,11 @@ function changePage(page) {
 </script>
 
 <style lang="scss" scoped>
+main {
+   margin-bottom: 20px;
+}
+
 .cards-container {
-   // display: flex;
-   // flex-wrap: wrap;
-   // justify-content: flex-start;
-   // gap: 27px;
-   // margin: 20px auto;
    width: 600px;
    padding: 10px 0;
    display: flex;
