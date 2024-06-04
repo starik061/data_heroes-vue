@@ -38,7 +38,7 @@ function changeFilterQuery(e) {
 }
 
 function emitFiltration() {
-   emit("filtration", { name: filterQuery, status: choosenStatusType })
+   emit("filtration", { name: filterQuery.value, status: choosenStatusType.value })
 }
 
 function goTo() {
