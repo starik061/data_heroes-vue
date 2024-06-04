@@ -1,12 +1,14 @@
 <template>
    <audio class="visually-hidden" type="audio/mpeg" ref="audioRef" />
    <main>
-      <div class="cards-container" @click="playAudio">
+      <div v-if="charactersData?.length > 0" class="cards-container" @click="playAudio">
          <CharacterCard v-for="(character, characterIdx ) in props.charactersData" :key="character + characterIdx"
             :character="character" />
       </div>
-      <v-pagination :length="props.totalPages" :total-visible="3" :start="calcStartPaginationNumber" rounded="circle"
-         active-color="grey-darken-4" :model-value="props.currentPage" @update:modelValue="changePage"></v-pagination>
+      <div v-else>Ничего не найдено</div>
+      <v-pagination v-if="totalPages > 0" :length="props.totalPages" :total-visible="3"
+         :start="calcStartPaginationNumber" rounded="circle" active-color="grey-darken-4"
+         :model-value="props.currentPage" @update:modelValue="changePage"></v-pagination>
    </main>
 </template>
 

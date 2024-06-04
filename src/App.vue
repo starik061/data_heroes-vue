@@ -26,10 +26,7 @@ import FooterBar from "@/components/FooterBar.vue";
 
 import { getCharacters } from "@/api/rick-and-mortyAPI";
 
-
-
 import { ref, onMounted } from 'vue';
-
 
 const isLoading = ref(false);
 const charactersData = ref([]);
@@ -39,26 +36,53 @@ const filterQuery = ref("");
 const filterStatus = ref("alive");
 
 async function handleFiltration({ name, status }) {
-  filterQuery.value = name;
-  filterStatus.value = status
+  try {
+    filterQuery.value = name;
+    filterStatus.value = status
 
-  const response = await getCharacters(filterQuery.value, filterStatus.value, currentPage.value);
-  charactersData.value = response.results;
-  totalPages.value = response.info.pages;
+    isLoading.value = true;
+    charactersData.value.length = 0;
+
+    const response = await getCharacters(filterQuery.value, filterStatus.value, currentPage.value);
+    charactersData.value = response.results;
+    totalPages.value = response.info.pages;
+
+    isLoading.value = false;
+  } catch (error) {
+    isLoading.value = false;
+    totalPages.value = 0;
+  }
 }
 
 async function handlePageChanging(payload) {
-  currentPage.value = payload;
+  try {
+    currentPage.value = payload;
+    isLoading.value = true;
 
-  const response = await getCharacters(filterQuery.value, filterStatus.value, currentPage.value);
-  charactersData.value = response.results;
+    const response = await getCharacters(filterQuery.value, filterStatus.value, currentPage.value);
+    charactersData.value = response.results;
+
+    isLoading.value = false;
+  } catch (error) {
+    isLoading.value = false;
+    totalPages.value = 0;
+  }
 }
 
 onMounted(async () => {
-  const response = await getCharacters();
-  console.log(response)
-  charactersData.value = response.results;
-  totalPages.value = response.info.pages;
+  try {
+    isLoading.value = true;
+
+    const response = await getCharacters();
+
+    charactersData.value = response.results;
+    totalPages.value = response.info.pages;
+
+    isLoading.value = false;
+  } catch (error) {
+    isLoading.value = false;
+    totalPages.value = 0;
+  }
 })
 
 </script>
