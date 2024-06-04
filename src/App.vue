@@ -37,6 +37,8 @@ const filterStatus = ref("alive");
 
 async function handleFiltration({ name, status }) {
   try {
+    currentPage.value = 1;
+
     filterQuery.value = name;
     filterStatus.value = status
 
